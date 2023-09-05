@@ -95,7 +95,7 @@
         <h2>後側</h2>
         <input type="number" step="0.1" id="sprb" placeholder="最大值">
         <input type="number" step="0.1" id="sprs" placeholder="最小值">
-        <input type="number" step="0.1"min="0" max="1" id="spg" placeholder="車重比">
+        <input type="number" step="0.01"min="0" max="1" id="spg" placeholder="車重比">
         <p>&emsp;</p>
         <button onclick="sp()">開始進行計算</button>
         <p id="sp_fb"></p>
@@ -106,7 +106,7 @@
         <hr>
         <input type="number" step="0.1" id="frb" placeholder="最大值">
         <input type="number" step="0.1" id="frs" placeholder="最小值">
-        <input type="number" step="0.1"min="0" max="1" id="frg" placeholder="車重比">
+        <input type="number" step="0.01"min="0" max="1" id="frg" placeholder="車重比">
         <p>&emsp;</p>
         <button onclick="fr()">開始進行計算</button>
         <p></p>
@@ -129,7 +129,7 @@
         <h2>回彈硬度</h2>
         <input type="number" step="0.1" id="atrb" placeholder="最大值">
         <input type="number" step="0.1" id="atrs" placeholder="最小值">
-        <input type="number" step="0.1"min="0" max="1" id="atg" placeholder="車重比">
+        <input type="number" step="0.01"min="0" max="1" id="atg" placeholder="車重比">
         <p>&emsp;</p>
         <button onclick="at()">開始進行計算</button>
         <p id="at_rb"></p>
@@ -140,12 +140,17 @@
     <!-- 顯示計算結果 -->
 
     <script>
+
     function sp() {
         var spfb = parseFloat(document.getElementById('spfb').value);
         var spfs = parseFloat(document.getElementById('spfs').value);
         var sprb = parseFloat(document.getElementById('sprb').value);
         var sprs = parseFloat(document.getElementById('sprs').value);
         var spg = parseFloat(document.getElementById('spg').value);
+
+        if (spg > 1) {
+          spg = 1;
+        }
     
         var sp_fb1 = (spfb - spfs) * spg;
         var sp_rb1 = (sprb - sprs) * spg;
@@ -161,6 +166,10 @@
         var frb = parseFloat(document.getElementById('frb').value);
         var frs = parseFloat(document.getElementById('frs').value);
         var frg = parseFloat(document.getElementById('frg').value);
+
+        if (frg > 1) {
+          frg = 1;
+        }
     
         var fr_f41 = (frb - frs) * frg + frs; // 前輪_前置四驅
         var fr_f4r1 = (frb - frs) * (1 - frg) + frs;; // 後輪_前置四驅
@@ -194,6 +203,10 @@
         var atrb = parseFloat(document.getElementById('atrb').value);
         var atrs = parseFloat(document.getElementById('atrs').value);
         var atg = parseFloat(document.getElementById('atg').value);
+
+        if (atg > 1) {
+          atg = 1;
+        }
 
         var at_rb1 = (atrb - atrs) * atg + atrs; //前回彈硬度
         var at_fb1 = at_rb1 * 0.6 //前壓縮硬度
