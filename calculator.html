@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>FH4車輛調校</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/head.png" rel="icon">
+  <link href="assets/img/head.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1>FH4</h1>
+      </a>
+
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <nav id="navbar" class="navbar">
+        <ul>
+        <li><a href="index.html">FH4車輛調校</a></li>
+        <li><a href="calculator.html">計算機</a></li>
+        </ul>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+  <!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="page-header d-flex align-items-center" style="background-image: url('assets/img/back.png');">
+        <div class="container position-relative">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 text-center">
+              <h2>車輛調教</h2>
+              <p>esc/車輛/調校車輛
+              <br>本篇參考 <a href="https://astalsi401.github.io/notes/fh4/basic_tune.html">astalsi401</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav>
+        <div class="container">
+          <ol>
+            <li><a href="index.html">FH4</a></li>
+            <li>計算機</li>
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing">
+      <div class="container" data-aos="fade-up">
+        
+        <h1>彈簧計算機</h1>
+
+        <hr>
+        <h2>前側</h2>
+        <input type="number" step="0.1" id="spfb" placeholder="最大值">
+        <input type="number" step="0.1" id="spfs" placeholder="最小值">
+
+        <h2>後側</h2>
+        <input type="number" step="0.1" id="sprb" placeholder="最大值">
+        <input type="number" step="0.1" id="sprs" placeholder="最小值">
+        <input type="number" step="0.1"min="0" max="1" id="spg" placeholder="車重比">
+        <p>&emsp;</p>
+        <button onclick="sp()">開始進行計算</button>
+        <p id="sp_fb"></p>
+        <p id="sp_rb"></p>
+
+        <h1>防傾桿計算機</h1>
+
+        <hr>
+        <input type="number" step="0.1" id="frb" placeholder="最大值">
+        <input type="number" step="0.1" id="frs" placeholder="最小值">
+        <input type="number" step="0.1"min="0" max="1" id="frg" placeholder="車重比">
+        <p>&emsp;</p>
+        <button onclick="fr()">開始進行計算</button>
+        <p></p>
+        <h3>前置四驅</h3>
+        <p id="fr_f4"></p>
+        <p id="fr_f4r"></p>
+        <h3>中置四驅</h3>
+        <p id="fr_r4"></p>
+        <p id="fr_r4r"></p>
+        <h3>後輪驅動</h3>
+        <p id="fr_r"></p>
+        <p id="fr_rr"></p>
+        <h3>前輪驅動</h3>
+        <p id="fr_f"></p>
+        <p id="fr_fr"></p>
+
+        <h1>阻尼計算機</h1>
+
+        <hr>
+        <h2>回彈硬度</h2>
+        <input type="number" step="0.1" id="atrb" placeholder="最大值">
+        <input type="number" step="0.1" id="atrs" placeholder="最小值">
+        <input type="number" step="0.1"min="0" max="1" id="atg" placeholder="車重比">
+        <p>&emsp;</p>
+        <button onclick="at()">開始進行計算</button>
+        <p id="at_rb"></p>
+        <p id="at_fb"></p>
+        
+    </div>
+
+    <!-- 顯示計算結果 -->
+
+    <script>
+    function sp() {
+        var spfb = parseFloat(document.getElementById('spfb').value);
+        var spfs = parseFloat(document.getElementById('spfs').value);
+        var sprb = parseFloat(document.getElementById('sprb').value);
+        var sprs = parseFloat(document.getElementById('sprs').value);
+        var spg = parseFloat(document.getElementById('spg').value);
+    
+        var sp_fb1 = (spfb - spfs) * spg;
+        var sp_rb1 = (sprb - sprs) * spg;
+    
+        var sp_fb = sp_fb1.toFixed(2); // 保留兩位小數
+        var sp_rb = sp_rb1.toFixed(2); // 保留兩位小數
+    
+        document.getElementById('sp_fb').textContent = '前側：' + sp_fb;
+        document.getElementById('sp_rb').textContent = '後側：' + sp_rb;
+    }
+
+    function fr() {
+        var frb = parseFloat(document.getElementById('frb').value);
+        var frs = parseFloat(document.getElementById('frs').value);
+        var frg = parseFloat(document.getElementById('frg').value);
+    
+        var fr_f41 = (frb - frs) * frg + frs; // 前輪_前置四驅
+        var fr_f4r1 = (frb - frs) * (1 - frg) + frs;; // 後輪_前置四驅
+        var fr_r41 = (frb - frs) * (frg + 0.02) + frs; // 前輪_中置四驅
+        var fr_r4r1 = (frb - frs) * (1 - frg + 0.02) + frs; // 後輪_中置四驅
+        var fr_r1 = (frb - frs) * (frg + 0.06) + frs; // 前輪_後輪驅動
+        var fr_rr1 = (frb - frs) * (1 - frg + 0.06) + frs;; // 後輪_後輪驅動
+        var fr_f1 = (frb - frs) * (frg - 0.08) + frs; // 前輪_前輪驅動
+        var fr_fr1 = (frb - frs) * (1 - frg - 0.08) + frs; // 後輪_前輪驅動
+    
+        var fr_f4 = fr_f41.toFixed(2); // 前輪_前置四驅
+        var fr_f4r = fr_f4r1.toFixed(2); // 後輪_前置四驅
+        var fr_r4 = fr_r41.toFixed(2); // 前輪_中置四驅
+        var fr_r4r = fr_r4r1.toFixed(2); // 後輪_中置四驅
+        var fr_r = fr_r1.toFixed(2); // 前輪_後輪驅動
+        var fr_rr = fr_rr1.toFixed(2); // 後輪_後輪驅動
+        var fr_f = fr_f1.toFixed(2); // 前輪_前輪驅動
+        var fr_fr = fr_fr1.toFixed(2); // 後輪_前輪驅動
+    
+        document.getElementById('fr_f4').textContent = '前側：' + fr_f4; // 前輪_前置四驅
+        document.getElementById('fr_f4r').textContent = '後側：' + fr_f4r; // 後輪_前置四驅
+        document.getElementById('fr_r4').textContent = '前側：' + fr_r4; // 前輪_中置四驅
+        document.getElementById('fr_r4r').textContent = '後側：' + fr_r4r; // 後輪_中置四驅
+        document.getElementById('fr_r').textContent = '前側：' + fr_r; // 前輪_後輪驅動
+        document.getElementById('fr_rr').textContent = '後側：' + fr_rr; // 後輪_後輪驅動
+        document.getElementById('fr_f').textContent = '前側：' + fr_f; // 前輪_前輪驅動
+        document.getElementById('fr_fr').textContent = '後側：' + fr_fr; // 後輪_前輪驅動
+    }
+
+    function at() {
+        var atrb = parseFloat(document.getElementById('atrb').value);
+        var atrs = parseFloat(document.getElementById('atrs').value);
+        var atg = parseFloat(document.getElementById('atg').value);
+
+        var at_rb1 = (atrb - atrs) * atg + atrs; //前回彈硬度
+        var at_fb1 = at_rb1 * 0.6 //前壓縮硬度
+        var at_rbr1 = (atrb - atrs) * (1 - atg) + atrs; //後回彈硬度
+        var at_fbr1 = at_rbr1 * 0.6 //後壓縮硬度
+    
+        var at_fb = at_fb1.toFixed(2); // 保留兩位小數
+        var at_rb = at_rb1.toFixed(2); // 保留兩位小數
+        var at_fbr = at_fbr1.toFixed(2); // 保留兩位小數
+        var at_rbr = at_rbr1.toFixed(2); // 保留兩位小數
+    
+        document.getElementById('at_rb').innerHTML = '回彈硬度<br>前側 : ' + at_rb + '<br>後側 : ' + at_rbr;
+        document.getElementById('at_fb').innerHTML = '壓縮硬度<br>前側 : ' + at_fb + '<br>後側 : ' + at_fbr;
+    }
+    </script>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-info">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span>FH4 - 車輛調校</Legend></span>
+          </a>
+          <p>所有資訊僅參考，調整也需要依照手感不同進行更改</p>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>FH4</h4>
+          <ul>
+            <li><a href="#">車輛調校</a></li>
+            <li><a href="calculator.html">計算機</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-4">
+      <div class="copyright">
+        <br>The design produced by SINGHEN
+      </div>
+      
+    </div>
+
+  </footer><!-- End Footer -->
+  <!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
